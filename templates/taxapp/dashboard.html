@@ -1,0 +1,69 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tax Dashboard</title>
+  <link rel="stylesheet" href="{% static 'taxapp/styles.css' %}">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Tax Dashboard</h1>
+    <nav>
+      <a href="{% url 'map_view' %}">Map view</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="cards">
+      <div class="card">
+        <strong>Total people</strong>
+        <div class="num">{{ people.count }}</div>
+      </div>
+      <div class="card">
+        <strong>With tax due</strong>
+        <div class="num">{{ due_people.count }}</div>
+      </div>
+      <div class="card">
+        <strong>No tax</strong>
+        <div class="num">{{ no_tax_people.count }}</div>
+      </div>
+      <div class="card">
+        <strong>Licensed people</strong>
+        <div class="num">{{ licensed_people.count }}</div>
+      </div>
+      <div class="card">
+        <strong>Unlicensed NGOs</strong>
+        <div class="num">{{ unlicensed_ngos.count }}</div>
+      </div>
+    </section>
+
+    <section class="controls">
+      <input id="search" placeholder="Filter by name or tax due" />
+    </section>
+
+    <section>
+      <table id="people-table" class="table">
+        <thead>
+          <tr><th>Name</th><th>Tax due</th><th>Licensed</th><th>Location</th></tr>
+        </thead>
+        <tbody>
+          {% for p in people %}
+          <tr>
+            <td>{{ p.name }}</td>
+            <td>{{ p.tax_due }}</td>
+            <td>{% if p.has_license %}Yes{% else %}No{% endif %}</td>
+            <td>{% if p.latitude and p.longitude %}Yes{% else %}No{% endif %}</td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="4">No people found.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="{% static 'taxapp/dashboard.js' %}"></script>
+</body>
+</html>

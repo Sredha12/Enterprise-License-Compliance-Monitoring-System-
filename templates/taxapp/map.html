@@ -1,0 +1,60 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Map View</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+  <link rel="stylesheet" href="{% static 'taxapp/styles.css' %}">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Map View</h1>
+    <nav>
+      <a href="{% url 'dashboard' %}">Dashboard</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div id="map" style="height:600px" data-geojson-url="{% static 'taxapp/data/Chakkittapara.geojson' %}"></div>
+  </main>
+
+  <!-- embed people/ngos as application/json to avoid JS parse errors in editor -->
+  <script id="people-data" type="application/json">
+  [
+  {% for p in people %}
+    {
+      "lat": {{ p.latitude|default:'null' }},
+      "lng": {{ p.longitude|default:'null' }},
+      "name": "{{ p.name|escapejs }}",
+      "type": "person"
+    }{% if not forloop.last %},{% endif %}
+  {% empty %}
+  
+  {% endfor %}
+  ]
+  </script>
+
+  <script id="ngos-data" type="application/json">
+  [
+  {% for n in ngos %}
+    {
+      "lat": {{ n.latitude|default:'null' }},
+      "lng": {{ n.longitude|default:'null' }},
+      "name": "{{ n.name|escapejs }}",
+      "type": "ngo"
+    }{% if not forloop.last %},{% endif %}
+  {% empty %}
+  
+  {% endfor %}
+  ]
+  </script>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+  <script src="{% static 'taxapp/map.js' %}"></script>
+</body>
+</html>

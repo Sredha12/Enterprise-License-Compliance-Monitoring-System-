@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Chakkittappara Community Hall",
+    "licenseId": "LIC-1001",
+    "type": "Public Facility",
+    "status": "Active",
+    "address": "Main Road, Chakkittappara",
+    "latitude": 11.5524,
+    "longitude": 75.8328
+  },
+  {
+    "name": "Kattipara Veterinary Clinic",
+    "licenseId": "LIC-1002",
+    "type": "Health Services",
+    "status": "Active",
+    "address": "Kattipara Junction, Chakkittappara",
+    "latitude": 11.5479,
+    "longitude": 75.8294
+  },
+  {
+    "name": "Mundur Guest House",
+    "licenseId": "LIC-1003",
+    "type": "Hospitality",
+    "status": "Pending",
+    "address": "Mundur Road, Chakkittappara",
+    "latitude": 11.5581,
+    "longitude": 75.8352
+  },
+  {
+    "name": "Govt. Primary School",
+    "licenseId": "LIC-1004",
+    "type": "Educational",
+    "status": "Active",
+    "address": "School Lane, Chakkittappara",
+    "latitude": 11.5557,
+    "longitude": 75.8271
+  }
+]

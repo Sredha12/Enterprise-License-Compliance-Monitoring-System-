@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHAKKITTAPPARA GRAMAPANCHAYATH</title>
+  <link rel="stylesheet" href="static/taxapp/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-title">CHAKKITTAPPARA GRAMAPANCHAYATH</div>
+    <button class="topbar-menu" aria-label="Open menu">☰</button>
+  </header>
+
+  <div class="page-shell">
+    <aside class="sidebar">
+      <div class="sidebar-panel">
+        <h1>CHAKKITTAPPARA</h1>
+        <p>Official Gram Panchayath boundary site with an open map view of Chakkittappara village.</p>
+        <dl>
+          <div>
+            <dt>Boundary</dt>
+            <dd>Chakkittappara</dd>
+          </div>
+          <div>
+            <dt>Data source</dt>
+            <dd>OpenData Kerala</dd>
+          </div>
+          <div>
+            <dt>Purpose</dt>
+            <dd>Local planning, transparency and public mapping.</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="licensed-panel">
+        <h2>Licensed Buildings</h2>
+        <p>Licensed building permits in the Panchayath boundary.</p>
+        <div class="license-filters">
+          <label>
+            Status
+            <select id="license-status-filter">
+              <option value="">All statuses</option>
+            </select>
+          </label>
+          <label>
+            Type
+            <select id="license-type-filter">
+              <option value="">All types</option>
+            </select>
+          </label>
+        </div>
+        <ul id="licensed-buildings" class="licensed-list"></ul>
+      </div>
+    </aside>
+
+    <main class="content-area">
+      <section class="map-card">
+        <div class="map-card-header">
+          <div>
+            <span class="badge">Boundary Map</span>
+            <h2>Chakkittappara Gram Panchayath</h2>
+          </div>
+          <div class="map-summary">Map showing the Panchayath boundary over OpenStreetMap.</div>
+        </div>
+        <div class="map-frame">
+          <div id="map-canvas"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer-note">
+    <p>© 2026 Chakkittappara Gramapanchayath</p>
+  </footer>
+
+  <script>
+    window.GEOJSON_URL = 'static/taxapp/data/Chakkittapara.geojson';
+    window.LICENSES_URL = 'static/taxapp/licenses.json';
+  </script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+  <script src="static/taxapp/map.js?v=2"></script>
+</body>
+</html>
